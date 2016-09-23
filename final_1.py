@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('AppIndicator3', '0.1')
@@ -12,14 +14,10 @@ from gi.repository import Gtk as gtk
 from gi.repository import AppIndicator3 as appindicator
 
 
-
-
-
-
 class JioApp:
 	APPINDICATOR_ID = "JioFi2App"
 	indicator = None
-	icon = os.path.abspath('jio_blue.png')
+	icon = os.path.dirname(os.path.realpath(__file__)) + '/jio_blue.png'
 	low_battery_icon = 'low_batt.png'
 	connected_icon = 'jio_blue.png'
 	disconnected_icon = 'jio_red.png'
@@ -41,7 +39,7 @@ class JioApp:
 		gtk.main_quit()
 
 	def set_icon(self, icon_path):
-		self.icon = os.path.abspath(icon_path)
+		self.icon = os.path.dirname(os.path.realpath(__file__)) + '/' + icon_path
 
 	def get_icon(self):
 		return self.icon
